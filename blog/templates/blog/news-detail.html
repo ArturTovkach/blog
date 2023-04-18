@@ -1,0 +1,49 @@
+{% extends 'blog/base.html' %}
+
+{% block title%}
+    {{title}}
+{% endblock %}
+
+{% block content %}
+
+        <div class="alert alert-light">
+            <h3>{{post.title}}</h3>
+            <p>{{ post.text|safe }}</p>
+            <div class="row">
+                <div>
+                    <img src="{{ post.avtor.profile.img.url }}" alt="{{ post.avtor }}" class="user_images">
+
+                <div class="mt-2">
+                    <span class="text-muted">Публикация: {{ object.date|date:"d E Y в: H:i" }}</span>
+                    {% if post.avtor %}
+                        <p><b>Автор:</b> <a href="{% url 'user-news' object.avtor %}">{{ object.avtor }}</a></p>
+                    {%endif%}
+                </div>
+            </div>
+                 </div>
+            {%  if object.avtor == user %}
+            <hr>
+            <a href="{% url 'news-update' object.id %}" class="btn btn-info">Обновить статью</a>
+            <a href="{% url 'news-delete' object.id %}" class="btn btn-danger">Удалить статью</a>
+            {% endif %}
+        </div>
+
+{% endblock %}
+
+{% block aside_block %}
+<h4 class="mt-2">Интересные статьи</h4>
+<img class='img-thumbnail ' src="https://itproger.com/img/news/1678386582.jpg" alt="">
+<p>Многие хотят изучить программирование, чтобы создать свою игру. Но что для этого нужно, когда учишься работать с Python? Правильно – движки. Они чаще всего представляют собой библиотеки.</p>
+
+<a href="https://itproger.com/news/5-dvizhkov-dlya-sozdaniya-igr-v-python">
+    <button class="btn btn-warning">Посмотреть</button>
+</a>
+<img class='img-thumbnail mt-4' src="https://itproger.com/img/news/1679677650.jpg" alt="">
+<p>Удивительно, но хакеры смогли вывести язык программирования Go от компании Google в десятку лучших. Да, возможно дело не только в хакерах, но именно они применяли Go в течение последних лет.</p>
+
+<a href="https://itproger.com/news/hakeri-podnyali-go-v-top-10-luchshih-yazikov-programmirovaniya">
+    <button class="btn btn-warning">Посмотреть</button>
+</a>
+
+
+{% endblock %}

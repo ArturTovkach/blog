@@ -1,0 +1,42 @@
+{% extends 'blog/base.html' %}
+
+{% block title%}
+    Кабинет пользователя
+{% endblock %}
+
+{% block content %}
+    <h1>Кабинет пользователя</h1>
+    <div class="d-flex text-body-secondary pt-3">
+        <img class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="64" height="64" src="{{ user.profile.img.url }}">
+      <p class="pb-3 mb-0 small lh-sm border-bottom">
+        <strong class="d-block text-gray-dark">@{{ user.username }}</strong>
+          {% if user.email %}
+          <b>Email:</b> {{ user.email}}
+          {% endif %}
+      </p>
+    </div>
+    <form method="post" enctype="multipart/form-data" class="form-register mt-4">
+        {% csrf_token %}
+        {{ updateUserForm.as_p }}
+        {{ profileForm.as_p }}
+         <button class="btn btn-outline-warning" type="submit">Обновить</button>
+
+    </form>
+{% endblock %}
+
+{% block aside_block %}
+<h4 class="mt-2">Интересные статьи</h4>
+<img class='img-thumbnail' src="https://itproger.com/img/news/1679677650.jpg" alt="">
+<p>Удивительно, но хакеры смогли вывести язык программирования Go от компании Google в десятку лучших. Да, возможно дело не только в хакерах, но именно они применяли Go в течение последних лет.</p>
+
+<a href="https://itproger.com/news/hakeri-podnyali-go-v-top-10-luchshih-yazikov-programmirovaniya">
+    <button class="btn btn-warning">Посмотреть</button>
+</a>
+
+<img class='img-thumbnail mt-4' src="https://itproger.com/img/news/1678386582.jpg" alt="">
+<p>Многие хотят изучить программирование, чтобы создать свою игру. Но что для этого нужно, когда учишься работать с Python? Правильно – движки. Они чаще всего представляют собой библиотеки.</p>
+
+<a href="https://itproger.com/news/5-dvizhkov-dlya-sozdaniya-igr-v-python">
+    <button class="btn btn-warning">Посмотреть</button>
+</a>
+{% endblock %}
