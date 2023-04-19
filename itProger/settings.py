@@ -126,8 +126,8 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'p.s.ovdok@gmail.com'
 EMAIL_HOST_PASSWORD = 'ixzljozdtihltpwg'
 
-STATIC_ROOT = os.path.join(BASE_DIR , 'staticfiles')
-STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = 'blog/static/'
 
 STATICFILES_DIRS = [
     BASE_DIR / "static",
